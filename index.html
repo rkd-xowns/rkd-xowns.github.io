@@ -22,6 +22,10 @@
   .profile { display:flex; align-items:center; gap:16px; margin:0 0 32px; }
   .profile img { width:84px; height:84px; border-radius:50%; flex:0 0 auto; }
   .profile p { margin:2px 0 0; color:var(--muted); font-size:15px; }
+  .social { display:flex; gap:14px; margin-top:6px; font-size:14px; }
+  .social a { display:inline-flex; align-items:center; gap:5px; text-decoration:none; color:var(--fg); }
+  .social a:hover { color:var(--accent); }
+  .social svg { width:16px; height:16px; }
   .section { font-size:14px; color:var(--muted); font-weight:600; margin:36px 0 8px; }
   .section:first-of-type { margin-top:0; }
   .links a + a { margin-left:14px; }
@@ -41,6 +45,16 @@
     <div>
       <h1>나도 개발자다</h1>
       <p>nadogaebal · 직접 만든 앱과 웹</p>
+      <div class="social">
+        <a href="https://www.instagram.com/nadogaebal/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          @nadogaebal
+        </a>
+        <a href="mailto:support@nadogaebal.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7l8 6 8-6"/></svg>
+          문의
+        </a>
+      </div>
     </div>
   </header>
   <h2 class="section">앱</h2>
