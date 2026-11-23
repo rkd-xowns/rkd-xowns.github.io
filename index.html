@@ -8,16 +8,20 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="나도 개발자다 — nadogaebal">
 <meta property="og:description" content="직접 만든 앱과 웹 모음">
-<meta property="og:image" content="https://nadogaebal.com/assets/og.png">
+<meta property="og:image" content="https://nadogaebal.com/assets/og.png?v=2">
 <meta property="og:url" content="https://nadogaebal.com/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/profile-512.png">
 <style>
   :root { --bg:#ffffff; --fg:#1b1b1f; --muted:#5f6068; --line:#e6e6ea; --accent:#ff3b30; }
   @media (prefers-color-scheme: dark) { :root { --bg:#0e0e10; --fg:#f2f2f5; --muted:#a0a0aa; --line:#26262b; } }
   body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.7 -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; }
   main { max-width:720px; margin:0 auto; padding:48px 16px 80px; }
-  h1 { font-size:26px; margin:0 0 24px; }
+  h1 { font-size:26px; margin:0; }
+  .profile { display:flex; align-items:center; gap:16px; margin:0 0 32px; }
+  .profile img { width:84px; height:84px; border-radius:50%; flex:0 0 auto; }
+  .profile p { margin:2px 0 0; color:var(--muted); font-size:15px; }
   .section { font-size:14px; color:var(--muted); font-weight:600; margin:36px 0 8px; }
   .section:first-of-type { margin-top:0; }
   .links a + a { margin-left:14px; }
@@ -32,7 +36,13 @@
 </head>
 <body>
 <main>
-  <h1>나도 개발자다</h1>
+  <header class="profile">
+    <img src="/assets/profile.png" alt="nadogaebal 프로필 캐릭터" width="84" height="84">
+    <div>
+      <h1>나도 개발자다</h1>
+      <p>nadogaebal · 직접 만든 앱과 웹</p>
+    </div>
+  </header>
   <h2 class="section">앱</h2>
   <div class="app">
     <img src="/assets/onepercent/icon.png" alt="" width="56" height="56">
