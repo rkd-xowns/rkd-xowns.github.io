@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>1% — 배터리 1%, 완벽한 핑계</title>
+<meta name="description" content="스크린샷 속 배터리를 1%로 바꿔 주는 앱. 저전력 모드, 퍼센트 표시, 시계 바꾸기, 배터리 부족 알림창까지. 아이폰·갤럭시.">
+<meta name="theme-color" content="#000000">
+<meta property="og:type" content="website">
+<meta property="og:title" content="1% — 배터리 1%, 완벽한 핑계">
+<meta property="og:description" content="스크린샷 속 배터리를 1%로 바꿔 주는 앱">
+<meta property="og:image" content="https://nadogaebal.com/assets/onepercent/og.png">
+<meta property="og:url" content="https://nadogaebal.com/onepercent/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/onepercent/icon.png">
+<link rel="apple-touch-icon" href="/assets/onepercent/icon.png">
+<style>
+  :root {
+    --bg:#000; --fg:#f5f5f7; --muted:#9a9aa3; --card:#141416; --line:#26262b;
+    --red:#ff3b30; --yellow:#ffc400;
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg);
+         font:16px/1.65 -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+         -webkit-font-smoothing:antialiased; }
+  a { color:inherit; }
+  .glow { position:absolute; inset:0 0 auto 0; height:720px; pointer-events:none;
+          background:radial-gradient(60% 70% at 50% 0%, rgba(200,30,24,.55), transparent 70%); }
+  .wrap { position:relative; max-width:960px; margin:0 auto; padding:24px 16px 80px; }
+  nav { display:flex; justify-content:space-between; align-items:center; font-size:14px; color:var(--muted); }
+  nav a { text-decoration:none; }
+  nav a:hover { color:var(--fg); }
+
+  .hero { text-align:center; padding:56px 0 32px; }
+  .hero img { width:104px; height:104px; border-radius:24px; box-shadow:0 12px 40px rgba(255,59,48,.35); }
+  .hero h1 { font-size:clamp(40px, 9vw, 64px); line-height:1.12; margin:22px 0 12px; letter-spacing:-.02em; font-weight:900; }
+  .hero h1 em { font-style:normal; color:var(--red); }
+  .hero p { color:var(--muted); font-size:18px; margin:0 auto; max-width:30em; }
+  .platforms { margin-top:14px; font-size:14px; color:var(--muted); }
+  .stores { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:28px; }
+  .store { display:inline-flex; align-items:center; gap:8px; padding:12px 20px; border-radius:999px;
+           background:var(--card); border:1px solid var(--line); font-weight:700; font-size:15px; color:var(--muted); }
+  .store small { font-weight:600; color:var(--yellow); }
+
+  .shots { display:flex; gap:14px; overflow-x:auto; scroll-snap-type:x mandatory; padding:28px 16px 12px; margin:0 -16px;
+           scrollbar-width:none; }
+  .shots::-webkit-scrollbar { display:none; }
+  .shots img { flex:0 0 auto; width:min(62vw, 250px); aspect-ratio:1320/2868; height:auto; border-radius:22px;
+               scroll-snap-align:center; border:1px solid var(--line); background:#111; }
+  @media (min-width:1000px) { .shots { justify-content:center; } .shots img { width:146px; } }
+
+  h2 { font-size:26px; margin:64px 0 18px; letter-spacing:-.01em; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:14px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:22px; padding:22px; }
+  .card h3 { margin:0 0 4px; font-size:19px; display:flex; align-items:center; gap:8px; }
+  .card .price { color:var(--muted); font-size:14px; margin:0 0 14px; }
+  .pro { background:var(--yellow); color:#000; font-size:12px; font-weight:800; padding:2px 9px; border-radius:999px; }
+  ul { margin:0; padding-left:20px; }
+  li { margin:6px 0; }
+  li b { font-weight:700; }
+
+  .note { display:flex; gap:14px; align-items:flex-start; }
+  .note .ic { font-size:26px; line-height:1; }
+  .note p { margin:0; color:var(--muted); }
+  .note strong { color:var(--fg); display:block; margin-bottom:4px; font-size:17px; }
+
+  footer { margin-top:64px; padding-top:24px; border-top:1px solid var(--line); color:var(--muted); font-size:14px;
+           display:flex; flex-wrap:wrap; gap:8px 18px; }
+  footer a { color:var(--muted); }
+</style>
+</head>
+<body>
+<div class="glow"></div>
+<div class="wrap">
+  <nav>
+    <a href="/">← nadogaebal</a>
+    <a href="mailto:support@nadogaebal.com">문의</a>
+  </nav>
+
+  <header class="hero">
+    <img src="/assets/onepercent/icon.png" alt="1% 앱 아이콘" width="104" height="104">
+    <h1>배터리 <em>1%</em>,<br>완벽한 핑계</h1>
+    <p>스크린샷을 고르면 상태바의 배터리를 1%로 바꿔 줘요. 기종과 배터리 위치를 알아서 찾아서 실제 화면과 똑같이 그려요.</p>
+    <div class="platforms">아이폰 · 갤럭시(안드로이드)</div>
+    <div class="stores">
+      <span class="store">App Store <small>출시 준비 중</small></span>
+      <span class="store">Google Play <small>출시 준비 중</small></span>
+    </div>
+  </header>
+
+  <div class="shots" aria-label="앱 화면">
+    <img src="/assets/onepercent/01_hero.webp" alt="원래 배터리와 1%로 바꾼 배터리 비교" loading="lazy">
+    <img src="/assets/onepercent/02_auto.webp" alt="스크린샷을 고르면 기종을 자동으로 인식하는 편집 화면" loading="lazy">
+    <img src="/assets/onepercent/03_styles.webp" alt="기본, 퍼센트, 저전력 모드 배터리 모양" loading="lazy">
+    <img src="/assets/onepercent/04_clock.webp" alt="시계를 3시 12분으로 바꾼 화면" loading="lazy">
+    <img src="/assets/onepercent/05_alert.webp" alt="배터리 부족 알림창을 얹은 화면" loading="lazy">
+    <img src="/assets/onepercent/06_indicator.webp" alt="통화 중 표시를 지운 화면" loading="lazy">
+  </div>
+
+  <h2>무엇을 할 수 있나요</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>무료</h3>
+      <p class="price">광고가 조금 나와요</p>
+      <ul>
+        <li>배터리 <b>1% · 2% · 5% · 10%</b>, 직접 입력</li>
+        <li>퍼센트 표시 켜고 끄기</li>
+        <li><b>저전력 모드</b>(아이폰) · <b>절전 모드</b>(갤럭시)</li>
+        <li>기종과 배터리 모양 자동 인식</li>
+        <li>원본 화질 그대로, 스크린샷처럼 저장 (찍은 시각도 그대로)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Pro <span class="pro">PRO</span></h3>
+      <p class="price">한 번 결제로 평생 · 광고를 보고 한 장씩 써 볼 수도 있어요</p>
+      <ul>
+        <li><b>시계 시간 바꾸기</b> — 새벽 3시 12분, 배터리 1%</li>
+        <li><b>상태바 꾸미기</b> — 통화 중 · 화면 녹화 · 내비 표시, 위치 아이콘</li>
+        <li><b>배터리 부족 알림창</b> 얹기</li>
+        <li><b>통화·녹화 표시 지우기</b></li>
+        <li>광고 완전 제거</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>이렇게 써요</h2>
+  <div class="grid">
+    <div class="card"><h3>😜 친구에게 장난</h3><p class="price" style="margin:0">"폰 1%라 나중에 연락할게" 한 장이면 끝</p></div>
+    <div class="card"><h3>🎬 밈 · 콘텐츠</h3><p class="price" style="margin:0">짤, 상황극, 숏폼 영상 연출에</p></div>
+  </div>
+
+  <h2>개인정보</h2>
+  <div class="card note">
+    <div class="ic">🔒</div>
+    <div>
+      <strong>사진은 기기 밖으로 나가지 않아요</strong>
+      <p>모든 편집은 휴대폰 안에서만 이루어지고, 사진을 서버로 보내지 않아요. 자세한 내용은 <a href="/onepercent/privacy/">개인정보처리방침</a>을 봐 주세요.</p>
+    </div>
+  </div>
+
+  <footer>
+    <span>© 2026 nadogaebal</span>
+    <a href="/onepercent/privacy/">개인정보처리방침</a>
+    <a href="mailto:support@nadogaebal.com">support@nadogaebal.com</a>
+  </footer>
+</div>
+</body>
+</html>

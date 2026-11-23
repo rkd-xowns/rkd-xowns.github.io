@@ -3,7 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>nadogaebal</title>
+<title>nadogaebal — 나도 개발자다</title>
+<meta name="description" content="nadogaebal이 직접 만든 앱과 웹 모음. 1%, 수능시계.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="나도 개발자다 — nadogaebal">
+<meta property="og:description" content="직접 만든 앱과 웹 모음">
+<meta property="og:image" content="https://nadogaebal.com/assets/og.png">
+<meta property="og:url" content="https://nadogaebal.com/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <style>
   :root { --bg:#ffffff; --fg:#1b1b1f; --muted:#5f6068; --line:#e6e6ea; --accent:#ff3b30; }
   @media (prefers-color-scheme: dark) { :root { --bg:#0e0e10; --fg:#f2f2f5; --muted:#a0a0aa; --line:#26262b; } }
@@ -13,7 +21,8 @@
   .section { font-size:14px; color:var(--muted); font-weight:600; margin:36px 0 8px; }
   .section:first-of-type { margin-top:0; }
   .links a + a { margin-left:14px; }
-  .app { padding:18px 0; border-top:1px solid var(--line); }
+  .app { padding:18px 0; border-top:1px solid var(--line); display:flex; gap:16px; align-items:flex-start; }
+  .app img { width:56px; height:56px; border-radius:14px; flex:0 0 auto; }
   .app h2 { font-size:18px; margin:0 0 4px; }
   .app h2 span { color:var(--accent); }
   .app p { margin:0 0 6px; color:var(--muted); }
@@ -26,15 +35,21 @@
   <h1>나도 개발자다</h1>
   <h2 class="section">앱</h2>
   <div class="app">
-    <h2><span>1%</span></h2>
-    <p>스크린샷의 배터리를 1%로 바꿔 주는 사진 편집 앱</p>
-    <a href="onepercent/privacy/">개인정보처리방침</a>
+    <img src="/assets/onepercent/icon.png" alt="" width="56" height="56">
+    <div>
+      <h2><span>1%</span></h2>
+      <p>스크린샷의 배터리를 1%로 바꿔 주는 사진 편집 앱 · 아이폰, 갤럭시 (출시 준비 중)</p>
+      <div class="links"><a href="onepercent/">소개 보기</a><a href="onepercent/privacy/">개인정보처리방침</a></div>
+    </div>
   </div>
   <h2 class="section">웹</h2>
   <div class="app">
-    <h2><span>수능시계</span></h2>
-    <p>실제 수능 시간표와 타종에 맞춰 모의고사를 연습하는 시뮬레이터, 타이머, 스톱워치</p>
-    <a href="https://csat.nadogaebal.com">바로 가기</a>
+    <img src="/assets/csat/icon.png" alt="" width="56" height="56">
+    <div>
+      <h2><span>수능시계</span></h2>
+      <p>실제 수능 시간표와 타종에 맞춰 모의고사를 연습하는 시뮬레이터, 타이머, 스톱워치</p>
+      <div class="links"><a href="csat/">소개 보기</a><a href="https://csat.nadogaebal.com">바로 가기</a></div>
+    </div>
   </div>
   <footer>문의: <a href="mailto:support@nadogaebal.com">support@nadogaebal.com</a></footer>
 </main>

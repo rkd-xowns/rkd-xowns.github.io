@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>수능시계 — 실제 수능처럼 연습하는 시뮬레이터</title>
+<meta name="description" content="실제 수능 시간표와 타종 그대로 모의고사를 연습하는 무료 웹앱. 수능 시뮬레이터, 맞춤 타이머, 스톱워치. 설치 없이 브라우저에서.">
+<meta name="theme-color" content="#f2f4f6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101013" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:title" content="수능시계 — 실제 수능처럼 연습하는 시뮬레이터">
+<meta property="og:description" content="실제 수능 시간표와 타종 그대로. 시뮬레이터 · 타이머 · 스톱워치">
+<meta property="og:image" content="https://nadogaebal.com/assets/csat/og.png">
+<meta property="og:url" content="https://nadogaebal.com/csat/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/csat/icon.png">
+<link rel="apple-touch-icon" href="/assets/csat/icon.png">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  :root {
+    --bg:#f2f4f6; --fg:#191f28; --muted:#6b7684; --card:#ffffff; --line:#e5e8eb;
+    --blue:#3182f6; --blue-soft:#e8f3ff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#101013; --fg:#f2f4f6; --muted:#9ea6b2; --card:#1c1c20; --line:#2a2a30; --blue:#4c94ff; --blue-soft:#1b2a40; }
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg);
+         font:16px/1.65 "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+         -webkit-font-smoothing:antialiased; }
+  a { color:inherit; }
+  .wrap { max-width:960px; margin:0 auto; padding:24px 16px 80px; }
+  nav { display:flex; justify-content:space-between; align-items:center; font-size:14px; color:var(--muted); }
+  nav a { text-decoration:none; }
+  nav a:hover { color:var(--fg); }
+
+  .hero { display:grid; gap:28px; align-items:center; padding:48px 0 16px; }
+  @media (min-width:820px) { .hero { grid-template-columns:1.1fr 1fr; padding-top:72px; } }
+  .brand { display:flex; align-items:center; gap:12px; font-weight:700; color:var(--muted); }
+  .brand img { width:52px; height:52px; border-radius:14px; }
+  .hero h1 { font-size:clamp(36px, 7.5vw, 56px); line-height:1.15; margin:18px 0 14px; letter-spacing:-.025em; font-weight:800; }
+  .hero h1 em { font-style:normal; color:var(--blue); }
+  .hero p { color:var(--muted); font-size:18px; margin:0; max-width:28em; }
+  .cta { display:flex; flex-wrap:wrap; gap:10px; margin-top:28px; align-items:center; }
+  .btn { display:inline-flex; align-items:center; gap:8px; padding:15px 26px; border-radius:16px; text-decoration:none;
+         font-weight:700; font-size:17px; background:var(--blue); color:#fff; }
+  .btn:hover { filter:brightness(1.06); }
+  .sub { font-size:14px; color:var(--muted); }
+
+  .dday { background:var(--card); border:1px solid var(--line); border-radius:28px; padding:28px; }
+  .dday .label { color:var(--muted); font-weight:600; }
+  .dday .num { font-size:clamp(64px, 14vw, 104px); font-weight:800; line-height:1.05; letter-spacing:-.04em; margin:6px 0; }
+  .dday .num span { color:var(--blue); }
+  .dday .date { color:var(--muted); font-size:15px; }
+
+  .shots { display:flex; gap:16px; overflow-x:auto; scroll-snap-type:x mandatory; padding:40px 16px 12px; margin:0 -16px; scrollbar-width:none; }
+  .shots::-webkit-scrollbar { display:none; }
+  .shots figure { flex:0 0 auto; margin:0; scroll-snap-align:center; text-align:center; }
+  .shots img { width:min(64vw, 260px); aspect-ratio:393/852; height:auto; border-radius:30px; border:8px solid #1d1d1f;
+               box-shadow:0 18px 40px rgba(0,0,0,.18); display:block; background:#fff; }
+  .shots figcaption { margin-top:12px; font-size:14px; color:var(--muted); font-weight:600; }
+  @media (min-width:900px) { .shots { justify-content:center; } }
+
+  h2 { font-size:26px; margin:64px 0 18px; letter-spacing:-.015em; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:14px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:22px; padding:22px; }
+  .card h3 { margin:0 0 8px; font-size:19px; }
+  .card p { margin:0; color:var(--muted); }
+  .card ul { margin:8px 0 0; padding-left:20px; color:var(--muted); }
+  .card li { margin:5px 0; }
+  .card.wide { grid-column:1 / -1; }
+  .ic { width:40px; height:40px; border-radius:12px; background:var(--blue-soft); color:var(--blue); display:grid; place-items:center;
+        font-size:20px; margin-bottom:14px; }
+
+  ol.steps { margin:8px 0 0; padding-left:20px; color:var(--muted); }
+  ol.steps li { margin:6px 0; }
+  ol.steps b { color:var(--fg); }
+
+  footer { margin-top:64px; padding-top:24px; border-top:1px solid var(--line); color:var(--muted); font-size:14px;
+           display:flex; flex-wrap:wrap; gap:8px 18px; }
+  footer a { color:var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a href="/">← nadogaebal</a>
+    <a href="https://csat.nadogaebal.com">수능시계 열기 →</a>
+  </nav>
+
+  <section class="hero">
+    <div>
+      <div class="brand"><img src="/assets/csat/icon.png" alt="" width="52" height="52">수능시계</div>
+      <h1>실제 수능처럼,<br><em>시간표와 타종</em> 그대로</h1>
+      <p>예비령부터 종료령까지 실제 수능과 똑같이 흘러가는 모의고사 시뮬레이터. 설치 없이 브라우저에서 바로 써요.</p>
+      <div class="cta">
+        <a class="btn" href="https://csat.nadogaebal.com">무료로 시작하기</a>
+        <span class="sub">회원가입 없음 · 오프라인에서도 동작</span>
+      </div>
+    </div>
+    <div class="dday" aria-live="polite">
+      <div class="label" id="dlabel">다음 수능까지</div>
+      <div class="num" id="dnum"><span>D-</span>?</div>
+      <div class="date" id="ddate"></div>
+    </div>
+  </section>
+
+  <div class="shots" aria-label="앱 화면">
+    <figure><img src="/assets/csat/menu.webp" alt="수능까지 남은 날짜와 메뉴가 보이는 첫 화면" loading="lazy"><figcaption>D-day와 메뉴</figcaption></figure>
+    <figure><img src="/assets/csat/simulator.webp" alt="1교시 예비령이 진행 중인 시뮬레이터 화면 (다크 모드)" loading="lazy"><figcaption>수능 시뮬레이터 (다크 모드)</figcaption></figure>
+    <figure><img src="/assets/csat/timer.webp" alt="국어 80분이 설정된 맞춤 타이머" loading="lazy"><figcaption>맞춤 타이머</figcaption></figure>
+  </div>
+
+  <h2>기능</h2>
+  <div class="grid">
+    <div class="card wide">
+      <div class="ic">🔔</div>
+      <h3>수능 시뮬레이터</h3>
+      <ul>
+        <li>예비령 · 준비령 · 본령 · 쉬는 시간 타종을 실제 수능 순서대로</li>
+        <li>종료 10분 전(4교시는 5분 전) 안내 방송</li>
+        <li>영어 듣기 파일을 넣으면 실제처럼 시간에 맞춰 재생</li>
+        <li><b>지금 바로</b> 시작하거나, <b>실제 수능 시각</b>에 맞춰 자동 진행</li>
+        <li>문제마다 랩 기록 → 끝나면 결과 보고서(PDF)</li>
+        <li>새로고침하거나 앱을 다시 열어도 이어서 진행</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="ic">⏱</div>
+      <h3>맞춤 타이머</h3>
+      <p>국어 80분, 수학 100분처럼 영역별 시간으로 풀고 구간을 기록해요. 끝나기 5분 전 안내와 알림음까지.</p>
+    </div>
+    <div class="card">
+      <div class="ic">⏲</div>
+      <h3>스톱워치</h3>
+      <p>1/100초 단위로 문제별 풀이 시간을 재고 구간을 나눠요.</p>
+    </div>
+    <div class="card">
+      <div class="ic">🌙</div>
+      <h3>다크 · 라이트 테마</h3>
+      <p>밤 공부에는 어둡게, 낮에는 밝게.</p>
+    </div>
+    <div class="card">
+      <div class="ic">📶</div>
+      <h3>오프라인 사용</h3>
+      <p>한 번 열어 두면 인터넷 없이도 동작해요. 화면이 잠겨도 시간이 밀리지 않아요.</p>
+    </div>
+  </div>
+
+  <h2>앱처럼 설치하기</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>아이폰 (Safari)</h3>
+      <ol class="steps">
+        <li><a href="https://csat.nadogaebal.com">csat.nadogaebal.com</a> 열기</li>
+        <li>아래 <b>공유</b> 버튼 누르기</li>
+        <li><b>홈 화면에 추가</b></li>
+      </ol>
+    </div>
+    <div class="card">
+      <h3>안드로이드 (Chrome)</h3>
+      <ol class="steps">
+        <li><a href="https://csat.nadogaebal.com">csat.nadogaebal.com</a> 열기</li>
+        <li>오른쪽 위 <b>⋮ 메뉴</b> 누르기</li>
+        <li><b>앱 설치</b> 또는 <b>홈 화면에 추가</b></li>
+      </ol>
+    </div>
+  </div>
+
+  <footer>
+    <span>© 2026 nadogaebal</span>
+    <a href="https://csat.nadogaebal.com">csat.nadogaebal.com</a>
+    <a href="mailto:support@nadogaebal.com">support@nadogaebal.com</a>
+  </footer>
+</div>
+<script>
+  // 수능시계 앱(src/config/csat.ts)과 같은 규칙: 확정된 날짜가 없으면 11월 셋째 목요일로 추정
+  (function () {
+    var KNOWN = ['2024-11-14', '2025-11-13', '2026-11-19'];
+    var parse = function (s) { var p = s.split('-').map(Number); return new Date(p[0], p[1] - 1, p[2]); };
+    var third = function (y) { var f = new Date(y, 10, 1); var o = (4 - f.getDay() + 7) % 7; return new Date(y, 10, 1 + o + 14); };
+    var now = new Date(), today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var next = null, est = false;
+    var known = KNOWN.map(parse).filter(function (d) { return d >= today; }).sort(function (a, b) { return a - b; });
+    if (known.length) next = known[0];
+    for (var y = today.getFullYear(); !next; y++) {
+      if (KNOWN.some(function (d) { return d.indexOf(y + '-') === 0; })) continue;
+      var t = third(y); if (t >= today) { next = t; est = true; }
+    }
+    var days = Math.round((next - today) / 86400000);
+    var w = ['일', '월', '화', '수', '목', '금', '토'][next.getDay()];
+    document.getElementById('dlabel').textContent = (next.getFullYear() + 1) + '학년도 수능까지';
+    document.getElementById('dnum').innerHTML = days === 0 ? '<span>D-</span>DAY' : '<span>D-</span>' + days;
+    document.getElementById('ddate').textContent = next.getFullYear() + '년 ' + (next.getMonth() + 1) + '월 ' + next.getDate() + '일 ' + w + '요일' + (est ? ' (예정)' : '');
+  })();
+</script>
+</body>
+</html>
