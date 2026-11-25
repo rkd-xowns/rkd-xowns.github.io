@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>수능시계 — 실제 수능처럼 연습하는 시뮬레이터</title>
-<meta name="description" content="실제 수능 시간표와 타종 그대로 모의고사를 연습하고, 구간별 시간·채점·틀린 이유를 쌓아 누적 통계로 보는 무료 웹앱. 설치 없이 브라우저에서.">
+<title data-en="CSAT Clock: practice like the real Korean CSAT">수능시계 — 실제 수능처럼 연습하는 시뮬레이터</title>
+<script src="/i18n.js"></script>
+<meta name="description" content="실제 수능 시간표와 타종 그대로 모의고사를 연습하고, 구간별 시간·채점·틀린 이유를 쌓아 누적 통계로 보는 무료 웹앱. 설치 없이 브라우저에서." data-en-content="A free web app for practicing mock exams on the real Korean CSAT schedule and bells, then tracking section times, scores and mistake reasons over time. Runs in your browser, no install.">
 <meta name="theme-color" content="#f2f4f6" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#101013" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
@@ -34,6 +35,7 @@
   nav { display:flex; justify-content:space-between; align-items:center; font-size:14px; color:var(--muted); }
   nav a { text-decoration:none; }
   nav a:hover { color:var(--fg); }
+  nav .right { display:flex; gap:16px; }
 
   .hero { display:grid; gap:28px; align-items:center; padding:48px 0 16px; }
   @media (min-width:820px) { .hero { grid-template-columns:1.1fr 1fr; padding-top:72px; } }
@@ -86,41 +88,50 @@
 <div class="wrap">
   <nav>
     <a href="/">← nadogaebal</a>
-    <a href="https://csat.nadogaebal.com">수능시계 열기 →</a>
+    <span class="right"><a class="lang-toggle"></a><a href="https://csat.nadogaebal.com"><span lang="ko">수능시계 열기</span><span lang="en">Open CSAT Clock</span> →</a></span>
   </nav>
 
   <section class="hero">
     <div>
-      <div class="brand"><img src="/assets/csat/icon.png?v=2" alt="" width="52" height="52">수능시계</div>
-      <h1>실제 수능처럼,<br><em>시간표와 타종</em> 그대로</h1>
-      <p>예비령부터 종료령까지 실제 수능과 똑같이 흘러가는 모의고사 시뮬레이터. 구간마다 쓴 시간과 틀린 이유를 쌓아서, 어디서 시간을 잃고 무엇을 자주 틀리는지 보여 줘요.</p>
+      <div class="brand"><img src="/assets/csat/icon.png?v=2" alt="" width="52" height="52"><span lang="ko">수능시계</span><span lang="en">CSAT Clock</span></div>
+      <h1 lang="ko">실제 수능처럼,<br><em>시간표와 타종</em> 그대로</h1>
+      <h1 lang="en">Just like the real CSAT,<br><em>schedule and bells</em> included</h1>
+      <p lang="en">A mock exam simulator that runs exactly like the real Korean CSAT (college entrance exam), from the first warning bell to the final bell. It records the time you spend on each section and why you got questions wrong, then shows where you lose time and what you miss most.</p>
+      <p lang="ko">예비령부터 종료령까지 실제 수능과 똑같이 흘러가는 모의고사 시뮬레이터. 구간마다 쓴 시간과 틀린 이유를 쌓아서, 어디서 시간을 잃고 무엇을 자주 틀리는지 보여 줘요.</p>
       <div class="cta">
-        <a class="btn" href="https://csat.nadogaebal.com">무료로 시작하기</a>
-        <span class="sub">회원가입 없음 · 오프라인에서도 동작</span>
+        <a class="btn" href="https://csat.nadogaebal.com"><span lang="ko">무료로 시작하기</span><span lang="en">Start for free</span></a>
+        <span class="sub"><span lang="ko">회원가입 없음 · 오프라인에서도 동작</span><span lang="en">No sign-up · Works offline</span></span>
       </div>
     </div>
     <div class="dday" aria-live="polite">
-      <div class="label" id="dlabel">다음 수능까지</div>
+      <div class="label" id="dlabel"><span lang="ko">다음 수능까지</span><span lang="en">Until the next CSAT</span></div>
       <div class="num" id="dnum"><span>D-</span>?</div>
       <div class="date" id="ddate"></div>
     </div>
   </section>
 
-  <div class="shots" aria-label="앱 화면">
-    <figure><img src="/assets/csat/menu.webp?v=3" alt="수능까지 남은 날짜와 메뉴가 보이는 첫 화면" loading="lazy"><figcaption>D-day와 메뉴</figcaption></figure>
-    <figure><img src="/assets/csat/simulator-unit.webp?v=3" alt="수학 시험 중 지금 푸는 구간과 다음·넘김 버튼이 보이는 시뮬레이터" loading="lazy"><figcaption>구간별 시간 기록</figcaption></figure>
-    <figure><img src="/assets/csat/record.webp?v=3" alt="채점 번호판과 틀린 문제마다 이유와 단원을 고르는 기록 화면" loading="lazy"><figcaption>채점과 틀린 문제 정리</figcaption></figure>
-    <figure><img src="/assets/csat/stats.webp?v=3" alt="수학 점수 변화 그래프와 자주 틀리는 이유가 보이는 누적 통계" loading="lazy"><figcaption>누적 통계</figcaption></figure>
-    <figure><img src="/assets/csat/simulator.webp" alt="1교시 예비령이 진행 중인 시뮬레이터 화면 (다크 모드)" loading="lazy"><figcaption>수능 시뮬레이터 (다크 모드)</figcaption></figure>
-    <figure><img src="/assets/csat/timer.webp" alt="국어 80분이 설정된 맞춤 타이머" loading="lazy"><figcaption>맞춤 타이머</figcaption></figure>
+  <div class="shots" aria-label="앱 화면" data-en-aria-label="App screens">
+    <figure><img src="/assets/csat/menu.webp?v=3" alt="수능까지 남은 날짜와 메뉴가 보이는 첫 화면" data-en-alt="Home screen with days left until the CSAT and the menu" loading="lazy"><figcaption><span lang="ko">D-day와 메뉴</span><span lang="en">D-day and menu</span></figcaption></figure>
+    <figure><img src="/assets/csat/simulator-unit.webp?v=3" alt="수학 시험 중 지금 푸는 구간과 다음·넘김 버튼이 보이는 시뮬레이터" data-en-alt="Simulator during the math exam showing the current section with Next and Skip buttons" loading="lazy"><figcaption><span lang="ko">구간별 시간 기록</span><span lang="en">Time per section</span></figcaption></figure>
+    <figure><img src="/assets/csat/record.webp?v=3" alt="채점 번호판과 틀린 문제마다 이유와 단원을 고르는 기록 화면" data-en-alt="Grading grid where you pick a reason and topic for each wrong answer" loading="lazy"><figcaption><span lang="ko">채점과 틀린 문제 정리</span><span lang="en">Grading and mistake review</span></figcaption></figure>
+    <figure><img src="/assets/csat/stats.webp?v=3" alt="수학 점수 변화 그래프와 자주 틀리는 이유가 보이는 누적 통계" data-en-alt="Stats with a math score chart and the most common mistake reasons" loading="lazy"><figcaption><span lang="ko">누적 통계</span><span lang="en">Stats over time</span></figcaption></figure>
+    <figure><img src="/assets/csat/simulator.webp" alt="1교시 예비령이 진행 중인 시뮬레이터 화면 (다크 모드)" data-en-alt="Simulator during the first warning bell of period 1 (dark mode)" loading="lazy"><figcaption><span lang="ko">수능 시뮬레이터 (다크 모드)</span><span lang="en">CSAT simulator (dark mode)</span></figcaption></figure>
+    <figure><img src="/assets/csat/timer.webp" alt="국어 80분이 설정된 맞춤 타이머" data-en-alt="Custom timer set to 80 minutes for Korean" loading="lazy"><figcaption><span lang="ko">맞춤 타이머</span><span lang="en">Custom timer</span></figcaption></figure>
   </div>
 
-  <h2>기능</h2>
+  <h2><span lang="ko">기능</span><span lang="en">Features</span></h2>
   <div class="grid">
     <div class="card wide">
       <div class="ic">🔔</div>
-      <h3>수능 시뮬레이터</h3>
-      <ul>
+      <h3><span lang="ko">수능 시뮬레이터</span><span lang="en">CSAT simulator</span></h3>
+      <ul lang="en">
+        <li>Warning, ready, start and break bells in the same order as the real CSAT</li>
+        <li>Announcement 10 minutes before the end (5 minutes for period 4)</li>
+        <li>English listening: add the audio file and it plays on time like the real test, play it on another device, or practice reading only for 45 minutes</li>
+        <li>Start <b>right now</b>, or follow the <b>real CSAT clock</b> automatically (if that time has passed, it waits until the same time tomorrow)</li>
+        <li>Picks up where you left off after a refresh or reopening the app</li>
+      </ul>
+      <ul lang="ko">
         <li>예비령 · 준비령 · 본령 · 쉬는 시간 타종을 실제 수능 순서대로</li>
         <li>종료 10분 전(4교시는 5분 전) 안내 방송</li>
         <li>영어 듣기: 파일을 넣으면 실제처럼 시간에 맞춰 재생, 다른 기기로 듣기, 독해만 45분 연습</li>
@@ -130,8 +141,15 @@
     </div>
     <div class="card wide">
       <div class="ic">🧭</div>
-      <h3>구간·문제별 시간 기록</h3>
-      <ul>
+      <h3><span lang="ko">구간·문제별 시간 기록</span><span lang="en">Time per section and question</span></h3>
+      <ul lang="en">
+        <li>Set your <b>solving order</b> in advance (for Korean: reading theory → literature → elective), then just tap <b>Next</b> or <b>Skip</b> during the exam</li>
+        <li>Tap a skipped section in the list to return to it. Time before skipping and after returning is kept separately</li>
+        <li>For math: common/elective, multiple choice/short answer, or question by question</li>
+        <li>If you do reading during English listening, the time "spent during listening" is shown separately</li>
+        <li>During the exam, only the current section is shown so you stay focused</li>
+      </ul>
+      <ul lang="ko">
         <li>국어 독서론 → 문학 → 선택과목처럼 <b>푸는 순서</b>를 미리 정해 두고, 시험 중에는 <b>다음</b>과 <b>넘김</b>만 눌러요</li>
         <li>넘긴 구간은 목록에서 눌러 돌아오고, 넘기기 전과 돌아온 뒤 시간이 따로 남아요</li>
         <li>수학은 공통·선택 객관식/주관식, 또는 문제 하나하나로</li>
@@ -141,49 +159,65 @@
     </div>
     <div class="card">
       <div class="ic">✍️</div>
-      <h3>채점과 틀린 문제 정리</h3>
-      <p>끝나면 기록이 쌓여요. 번호판에 틀림·찍음을 표시하고, 문제마다 <b>왜 틀렸는지</b>와 <b>단원</b>을 골라요. 이유와 단원은 과목마다 따로 있고 직접 추가할 수도 있어요. 결과는 PDF로 저장.</p>
+      <h3><span lang="ko">채점과 틀린 문제 정리</span><span lang="en">Grading and mistake review</span></h3>
+      <p lang="en">Every session is saved. Mark wrong and guessed answers on the grid, then pick <b>why you got it wrong</b> and the <b>topic</b> for each question. Each subject has its own reasons and topics, and you can add your own. Save results as a PDF.</p>
+      <p lang="ko">끝나면 기록이 쌓여요. 번호판에 틀림·찍음을 표시하고, 문제마다 <b>왜 틀렸는지</b>와 <b>단원</b>을 골라요. 이유와 단원은 과목마다 따로 있고 직접 추가할 수도 있어요. 결과는 PDF로 저장.</p>
     </div>
     <div class="card">
       <div class="ic">📈</div>
-      <h3>누적 통계</h3>
-      <p>과목별 점수 변화, 자주 틀리는 이유와 단원, 구간별 평균 시간과 못 끝낸 횟수를 한눈에 봐요. 기록은 모두 내 기기 안에만 저장돼요.</p>
+      <h3><span lang="ko">누적 통계</span><span lang="en">Stats over time</span></h3>
+      <p lang="en">See score trends by subject, your most common mistake reasons and topics, and the average time and unfinished count for each section at a glance. All records stay on your device.</p>
+      <p lang="ko">과목별 점수 변화, 자주 틀리는 이유와 단원, 구간별 평균 시간과 못 끝낸 횟수를 한눈에 봐요. 기록은 모두 내 기기 안에만 저장돼요.</p>
     </div>
     <div class="card">
       <div class="ic">⏱</div>
-      <h3>맞춤 타이머</h3>
-      <p>국어 80분, 수학 100분처럼 영역별 시간으로 풀고 구간을 기록해요. 끝나기 5분 전 안내와 알림음까지.</p>
+      <h3><span lang="ko">맞춤 타이머</span><span lang="en">Custom timer</span></h3>
+      <p lang="en">Practice with per-subject times like 80 minutes for Korean or 100 for math, and record sections. Includes a 5-minute warning and an alert sound.</p>
+      <p lang="ko">국어 80분, 수학 100분처럼 영역별 시간으로 풀고 구간을 기록해요. 끝나기 5분 전 안내와 알림음까지.</p>
     </div>
     <div class="card">
       <div class="ic">⏲</div>
-      <h3>스톱워치</h3>
-      <p>1/100초 단위로 문제별 풀이 시간을 재고 구간을 나눠요.</p>
+      <h3><span lang="ko">스톱워치</span><span lang="en">Stopwatch</span></h3>
+      <p lang="en">Time each question to 1/100 of a second and split laps.</p>
+      <p lang="ko">1/100초 단위로 문제별 풀이 시간을 재고 구간을 나눠요.</p>
     </div>
     <div class="card">
       <div class="ic">🌙</div>
-      <h3>다크 · 라이트 테마</h3>
-      <p>밤 공부에는 어둡게, 낮에는 밝게.</p>
+      <h3><span lang="ko">다크 · 라이트 테마</span><span lang="en">Dark · light theme</span></h3>
+      <p lang="en">Dark for studying at night, light for the day.</p>
+      <p lang="ko">밤 공부에는 어둡게, 낮에는 밝게.</p>
     </div>
     <div class="card">
       <div class="ic">📶</div>
-      <h3>오프라인 사용</h3>
-      <p>한 번 열어 두면 인터넷 없이도 동작해요. 화면이 잠겨도 시간이 밀리지 않아요.</p>
+      <h3><span lang="ko">오프라인 사용</span><span lang="en">Works offline</span></h3>
+      <p lang="en">Open it once and it works without internet. Time stays accurate even when the screen locks.</p>
+      <p lang="ko">한 번 열어 두면 인터넷 없이도 동작해요. 화면이 잠겨도 시간이 밀리지 않아요.</p>
     </div>
   </div>
 
-  <h2>앱처럼 설치하기</h2>
+  <h2><span lang="ko">앱처럼 설치하기</span><span lang="en">Install it like an app</span></h2>
   <div class="grid">
     <div class="card">
-      <h3>아이폰 (Safari)</h3>
-      <ol class="steps">
+      <h3><span lang="ko">아이폰</span><span lang="en">iPhone</span> (Safari)</h3>
+      <ol class="steps" lang="en">
+        <li>Open <a href="https://csat.nadogaebal.com">csat.nadogaebal.com</a></li>
+        <li>Tap the <b>Share</b> button at the bottom</li>
+        <li><b>Add to Home Screen</b></li>
+      </ol>
+      <ol class="steps" lang="ko">
         <li><a href="https://csat.nadogaebal.com">csat.nadogaebal.com</a> 열기</li>
         <li>아래 <b>공유</b> 버튼 누르기</li>
         <li><b>홈 화면에 추가</b></li>
       </ol>
     </div>
     <div class="card">
-      <h3>안드로이드 (Chrome)</h3>
-      <ol class="steps">
+      <h3><span lang="ko">안드로이드</span><span lang="en">Android</span> (Chrome)</h3>
+      <ol class="steps" lang="en">
+        <li>Open <a href="https://csat.nadogaebal.com">csat.nadogaebal.com</a></li>
+        <li>Tap the <b>⋮ menu</b> at the top right</li>
+        <li><b>Install app</b> or <b>Add to Home screen</b></li>
+      </ol>
+      <ol class="steps" lang="ko">
         <li><a href="https://csat.nadogaebal.com">csat.nadogaebal.com</a> 열기</li>
         <li>오른쪽 위 <b>⋮ 메뉴</b> 누르기</li>
         <li><b>앱 설치</b> 또는 <b>홈 화면에 추가</b></li>
@@ -213,6 +247,12 @@
     }
     var days = Math.round((next - today) / 86400000);
     var w = ['일', '월', '화', '수', '목', '금', '토'][next.getDay()];
+    if (document.documentElement.lang === 'en') {
+      document.getElementById('dlabel').textContent = 'Until the ' + (next.getFullYear() + 1) + ' CSAT';
+      document.getElementById('dnum').innerHTML = days === 0 ? '<span>D-</span>DAY' : '<span>D-</span>' + days;
+      document.getElementById('ddate').textContent = next.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) + (est ? ' (expected)' : '');
+      return;
+    }
     document.getElementById('dlabel').textContent = (next.getFullYear() + 1) + '학년도 수능까지';
     document.getElementById('dnum').innerHTML = days === 0 ? '<span>D-</span>DAY' : '<span>D-</span>' + days;
     document.getElementById('ddate').textContent = next.getFullYear() + '년 ' + (next.getMonth() + 1) + '월 ' + next.getDate() + '일 ' + w + '요일' + (est ? ' (예정)' : '');

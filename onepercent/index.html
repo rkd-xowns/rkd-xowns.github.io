@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>1% — 배터리 1%, 완벽한 핑계</title>
-<meta name="description" content="스크린샷 속 배터리를 1%로 바꿔 주는 앱. 저전력 모드, 퍼센트 표시, 시계 바꾸기, 배터리 부족 알림창까지. 아이폰·갤럭시.">
+<title data-en="1%: Battery at 1%, the perfect excuse">1% — 배터리 1%, 완벽한 핑계</title>
+<script src="/i18n.js"></script>
+<meta name="description" content="스크린샷 속 배터리를 1%로 바꿔 주는 앱. 저전력 모드, 퍼센트 표시, 시계 바꾸기, 배터리 부족 알림창까지. 아이폰·갤럭시." data-en-content="An app that turns the battery in your screenshot to 1%. Low Power Mode, percentage, clock time and a low battery alert. iPhone and Android.">
 <meta name="theme-color" content="#000000">
 <meta property="og:type" content="website">
 <meta property="og:title" content="1% — 배터리 1%, 완벽한 핑계">
@@ -30,6 +31,7 @@
   nav { display:flex; justify-content:space-between; align-items:center; font-size:14px; color:var(--muted); }
   nav a { text-decoration:none; }
   nav a:hover { color:var(--fg); }
+  nav .right { display:flex; gap:16px; }
 
   .hero { text-align:center; padding:56px 0 32px; }
   .hero img { width:104px; height:104px; border-radius:24px; box-shadow:0 12px 40px rgba(255,59,48,.35); }
@@ -74,35 +76,44 @@
 <div class="wrap">
   <nav>
     <a href="/">← nadogaebal</a>
-    <a href="mailto:support@nadogaebal.com">문의</a>
+    <span class="right"><a class="lang-toggle"></a><a href="mailto:support@nadogaebal.com"><span lang="ko">문의</span><span lang="en">Contact</span></a></span>
   </nav>
 
   <header class="hero">
-    <img src="/assets/onepercent/icon.png" alt="1% 앱 아이콘" width="104" height="104">
-    <h1>배터리 <em>1%</em>,<br>완벽한 핑계</h1>
-    <p>스크린샷을 고르면 상태바의 배터리를 1%로 바꿔 줘요. 기종과 배터리 위치를 알아서 찾아서 실제 화면과 똑같이 그려요.</p>
-    <div class="platforms">아이폰 · 갤럭시(안드로이드)</div>
+    <img src="/assets/onepercent/icon.png" alt="1% 앱 아이콘" data-en-alt="1% app icon" width="104" height="104">
+    <h1 lang="ko">배터리 <em>1%</em>,<br>완벽한 핑계</h1>
+    <h1 lang="en">Battery at <em>1%</em>,<br>the perfect excuse</h1>
+    <p lang="ko">스크린샷을 고르면 상태바의 배터리를 1%로 바꿔 줘요. 기종과 배터리 위치를 알아서 찾아서 실제 화면과 똑같이 그려요.</p>
+    <p lang="en">Pick a screenshot and the battery in the status bar turns to 1%. It detects your phone model and the battery position, and draws it just like the real screen.</p>
+    <div class="platforms"><span lang="ko">아이폰 · 갤럭시(안드로이드)</span><span lang="en">iPhone · Android</span></div>
     <div class="stores">
-      <span class="store">App Store <small>출시 준비 중</small></span>
-      <span class="store">Google Play <small>출시 준비 중</small></span>
+      <span class="store">App Store <small><span lang="ko">출시 준비 중</span><span lang="en">Coming soon</span></small></span>
+      <span class="store">Google Play <small><span lang="ko">출시 준비 중</span><span lang="en">Coming soon</span></small></span>
     </div>
   </header>
 
-  <div class="shots" aria-label="앱 화면">
-    <img src="/assets/onepercent/01_hero.webp" alt="원래 배터리와 1%로 바꾼 배터리 비교" loading="lazy">
-    <img src="/assets/onepercent/02_auto.webp" alt="스크린샷을 고르면 기종을 자동으로 인식하는 편집 화면" loading="lazy">
-    <img src="/assets/onepercent/03_styles.webp" alt="기본, 퍼센트, 저전력 모드 배터리 모양" loading="lazy">
-    <img src="/assets/onepercent/04_clock.webp" alt="시계를 3시 12분으로 바꾼 화면" loading="lazy">
-    <img src="/assets/onepercent/05_alert.webp" alt="배터리 부족 알림창을 얹은 화면" loading="lazy">
-    <img src="/assets/onepercent/06_indicator.webp" alt="통화 중 표시를 지운 화면" loading="lazy">
+  <div class="shots" aria-label="앱 화면" data-en-aria-label="App screens">
+    <img src="/assets/onepercent/01_hero.webp" alt="원래 배터리와 1%로 바꾼 배터리 비교" data-en-alt="Original battery compared with the battery changed to 1%" loading="lazy">
+    <img src="/assets/onepercent/02_auto.webp" alt="스크린샷을 고르면 기종을 자동으로 인식하는 편집 화면" data-en-alt="Editor that detects the phone model from the screenshot" loading="lazy">
+    <img src="/assets/onepercent/03_styles.webp" alt="기본, 퍼센트, 저전력 모드 배터리 모양" data-en-alt="Default, percentage and Low Power Mode battery styles" loading="lazy">
+    <img src="/assets/onepercent/04_clock.webp" alt="시계를 3시 12분으로 바꾼 화면" data-en-alt="Clock changed to 3:12" loading="lazy">
+    <img src="/assets/onepercent/05_alert.webp" alt="배터리 부족 알림창을 얹은 화면" data-en-alt="Screen with a low battery alert added" loading="lazy">
+    <img src="/assets/onepercent/06_indicator.webp" alt="통화 중 표시를 지운 화면" data-en-alt="Screen with the call indicator removed" loading="lazy">
   </div>
 
-  <h2>무엇을 할 수 있나요</h2>
+  <h2><span lang="ko">무엇을 할 수 있나요</span><span lang="en">What it does</span></h2>
   <div class="grid">
     <div class="card">
-      <h3>무료</h3>
-      <p class="price">광고가 조금 나와요</p>
-      <ul>
+      <h3><span lang="ko">무료</span><span lang="en">Free</span></h3>
+      <p class="price"><span lang="ko">광고가 조금 나와요</span><span lang="en">Shows a few ads</span></p>
+      <ul lang="en">
+        <li>Battery at <b>1% · 2% · 5% · 10%</b>, or any number</li>
+        <li>Show or hide the percentage</li>
+        <li><b>Low Power Mode</b> (iPhone) · <b>Power saving</b> (Galaxy)</li>
+        <li>Detects phone model and battery style automatically</li>
+        <li>Saves at original quality, just like a screenshot (keeps the original time taken)</li>
+      </ul>
+      <ul lang="ko">
         <li>배터리 <b>1% · 2% · 5% · 10%</b>, 직접 입력</li>
         <li>퍼센트 표시 켜고 끄기</li>
         <li><b>저전력 모드</b>(아이폰) · <b>절전 모드</b>(갤럭시)</li>
@@ -112,8 +123,14 @@
     </div>
     <div class="card">
       <h3>Pro <span class="pro">PRO</span></h3>
-      <p class="price">광고를 하나 보면 사진 한 장에 쓸 수 있어요</p>
-      <ul>
+      <p class="price"><span lang="ko">광고를 하나 보면 사진 한 장에 쓸 수 있어요</span><span lang="en">Watch one ad to use it on one photo</span></p>
+      <ul lang="en">
+        <li><b>Change the clock time</b> (e.g. 1% battery at 3:12 a.m.)</li>
+        <li><b>Status bar extras</b>: add call, screen recording, navigation or location icons</li>
+        <li>Add a <b>low battery alert</b></li>
+        <li><b>Remove call and recording indicators</b></li>
+      </ul>
+      <ul lang="ko">
         <li><b>시계 시간 바꾸기</b> (예: 새벽 3시 12분에 배터리 1%)</li>
         <li><b>상태바 꾸미기</b>: 통화 중, 화면 녹화, 내비 표시, 위치 아이콘 넣기</li>
         <li><b>배터리 부족 알림창</b> 얹기</li>
@@ -122,24 +139,26 @@
     </div>
   </div>
 
-  <h2>이렇게 써요</h2>
+  <h2><span lang="ko">이렇게 써요</span><span lang="en">Ideas</span></h2>
   <div class="grid">
-    <div class="card"><h3>😜 친구에게 장난</h3><p class="price" style="margin:0">"폰 1%라 나중에 연락할게" 한 장이면 끝</p></div>
-    <div class="card"><h3>🎬 밈 · 콘텐츠</h3><p class="price" style="margin:0">짤, 상황극, 숏폼 영상 연출에</p></div>
+    <div class="card"><h3>😜 <span lang="ko">친구에게 장난</span><span lang="en">Prank your friends</span></h3><p class="price" style="margin:0"><span lang="ko">"폰 1%라 나중에 연락할게" 한 장이면 끝</span><span lang="en">"My phone's at 1%, talk later." One screenshot does it</span></p></div>
+    <div class="card"><h3>🎬 <span lang="ko">밈 · 콘텐츠</span><span lang="en">Memes · content</span></h3><p class="price" style="margin:0"><span lang="ko">짤, 상황극, 숏폼 영상 연출에</span><span lang="en">For memes, skits and short videos</span></p></div>
   </div>
 
-  <h2>개인정보</h2>
+  <h2><span lang="ko">개인정보</span><span lang="en">Privacy</span></h2>
   <div class="card note">
     <div class="ic">🔒</div>
     <div>
-      <strong>사진은 기기 밖으로 나가지 않아요</strong>
-      <p>모든 편집은 휴대폰 안에서만 이루어지고, 사진을 서버로 보내지 않아요. 자세한 내용은 <a href="/onepercent/privacy/">개인정보처리방침</a>을 봐 주세요.</p>
+      <strong lang="en">Your photos never leave your phone</strong>
+      <p lang="en">All editing happens on your phone. Photos are never sent to a server. See the <a href="/onepercent/privacy/">Privacy Policy</a> for details.</p>
+      <strong lang="ko">사진은 기기 밖으로 나가지 않아요</strong>
+      <p lang="ko">모든 편집은 휴대폰 안에서만 이루어지고, 사진을 서버로 보내지 않아요. 자세한 내용은 <a href="/onepercent/privacy/">개인정보처리방침</a>을 봐 주세요.</p>
     </div>
   </div>
 
   <footer>
     <span>© 2026 nadogaebal</span>
-    <a href="/onepercent/privacy/">개인정보처리방침</a>
+    <a href="/onepercent/privacy/"><span lang="ko">개인정보처리방침</span><span lang="en">Privacy Policy</span></a>
     <a href="mailto:support@nadogaebal.com">support@nadogaebal.com</a>
   </footer>
 </div>
